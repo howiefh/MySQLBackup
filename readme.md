@@ -12,3 +12,4 @@ shell> crontab -e
 mysqlFullRecover.sh 最后一次备份的sql
 mysqlDailyRecover.sh  本周的二进制日志文件
 
+参考:[MySQL 备份和恢复策略](http://blog.sina.com.cn/s/blog_4e424e2101000c1z.html)
