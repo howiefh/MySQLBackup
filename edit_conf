@@ -1,0 +1,37 @@
+#!/bin/bash
+# Name:edit_conf
+# usage:./edit_conf root 123456 test howiefh@gmail.com localhost 21 testuser 1234 pub
+ROOT=`pwd`
+dataBackupDir=/tmp/mysqlbackup
+dailyBackupDir=$dataBackupDir/daily
+mkdir $dataBackupDir
+mkdir $dailyBackupDir
+# mysql 用户名
+MYSQLUSER=$1
+# mysql 用户密码
+MYSQLPWD=$2
+# 数据库
+DBName=$3
+# 发送到email
+EMAIL=$4
+find . -name "*.sh" -exec sed -i "s/^MYSQLUSER=.*$/MYSQLUSER=${MYSQLUSER}/" {} \;
+find . -name "*.sh" -exec sed -i "s/^MYSQLUSERPWD=.*$/MYSQLUSERPWD=${MYSQLPWD}/" {} \;
+find . -name "*.sh" -exec sed -i "s/^DBName=.*$/DBName=${DBName}/" {} \;
+find . -name "*.sh" -exec sed -i "s/^eMail=.*$/eMail=${EMAIL}/" {} \;
+
+#ftp配置
+FTPHOST=$5
+#端口号
+FTPPORT=$6
+#用户名
+FTPUSER=$7
+#密码
+FTPPWD=$8
+#这个就是FTP根目录下的data文件夹，表示就保存在这里
+FTPDIR=pub
+find . -name "*.sh" -exec sed -i "s/^ftphost=.*$/ftphost=${FTPHOST}/" {} \;
+find . -name "*.sh" -exec sed -i "s/^ftpport=.*$/ftpport=${FTPPORT}/" {} \;
+find . -name "*.sh" -exec sed -i "s/^ftpuser=.*$/ftpuser=${FTPUSER}/" {} \;
+find . -name "*.sh" -exec sed -i "s/^ftppwd=.*$/ftppwd=${FTPPWD}/" {} \;
+find . -name "*.sh" -exec sed -i "s/^ftpdir=.*$/ftpdir=${FTPDIR}/" {} \;
+
