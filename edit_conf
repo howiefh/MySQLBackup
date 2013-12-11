@@ -1,6 +1,7 @@
 #!/bin/bash
 # Name:edit_conf
 # usage:./edit_conf root 123456 test howiefh@gmail.com localhost 21 testuser 1234 pub
+# usage:./edit_conf [mysqluser] [mysqlpwd] [dbname] [email] [ftphost] [ftpport] [ftpuser] [ftppwd] [ftpdir]
 ROOT=`pwd`
 dataBackupDir=/tmp/mysqlbackup
 dailyBackupDir=$dataBackupDir/daily
@@ -28,7 +29,7 @@ FTPUSER=$7
 #密码
 FTPPWD=$8
 #这个就是FTP根目录下的data文件夹，表示就保存在这里
-FTPDIR=pub
+FTPDIR=$9
 find . -name "*.sh" -exec sed -i "s/^ftphost=.*$/ftphost=${FTPHOST}/" {} \;
 find . -name "*.sh" -exec sed -i "s/^ftpport=.*$/ftpport=${FTPPORT}/" {} \;
 find . -name "*.sh" -exec sed -i "s/^ftpuser=.*$/ftpuser=${FTPUSER}/" {} \;
